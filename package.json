@@ -1,0 +1,32 @@
+{
+  "name": "vercel-101",
+  "version": "1.0.0",
+  "description": "Let's build vercel like cloneGET IT READY BEFORE THIS WEEK : 15:05:2025 APRIL, 2025 IST",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ichiragkumar/vercel-101.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ichiragkumar/vercel-101/issues"
+  },
+  "homepage": "https://github.com/ichiragkumar/vercel-101#readme",
+  "dependencies": {
+    "@types/express": "^5.0.2",
+    "aws-sdk": "^2.1692.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "redis": "^5.1.1",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18"
+  }
+}

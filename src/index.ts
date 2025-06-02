@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors"
-
+import { Helper } from "./utils/help";
+import simpleGit from "simple-git";
 const app = express();
 
 app.use(express.json())
@@ -12,16 +13,20 @@ app.get("/", (req, res)=>{
 })
 
 
-app.post("/deploy", (req, res) =>{
+app.post("/deploy",async (req, res) =>{
     const repoUrl = req.body.repoUrl;
     if(!repoUrl){
         res.status(400).send("repoUrl is required");
         return;
     }
+    const id = Helper.generateRandomIdForUpload();
+
+    const gitClonedRepo =await simpleGit().clone(repoUrl, `output/${id}`);
 
    res.status(200).json({
     msg:"deploying",
-    repoUrl
+    repoUrl,
+    id:Helper.generateRandomIdForUpload()
    })
 })
 

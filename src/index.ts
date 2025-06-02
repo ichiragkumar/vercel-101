@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors"
 import { Helper } from "./utils/help";
 import simpleGit from "simple-git";
+import path from "path";
 const app = express();
 
 app.use(express.json())
@@ -21,12 +22,17 @@ app.post("/deploy",async (req, res) =>{
     }
     const id = Helper.generateRandomIdForUpload();
 
-    const gitClonedRepo =await simpleGit().clone(repoUrl, `output/${id}`);
+    const gitClonedRepo =await simpleGit().clone(repoUrl, path.join(__dirname, `output/${id}`));
+
+    const allFiles = await Helper.getAllTheFilesPathFromDirectory(path.join(__dirname, `output/${id}`));
+
+
 
    res.status(200).json({
     msg:"deploying",
     repoUrl,
-    id:Helper.generateRandomIdForUpload()
+    id:Helper.generateRandomIdForUpload(),
+    allFiles : allFiles
    })
 })
 
